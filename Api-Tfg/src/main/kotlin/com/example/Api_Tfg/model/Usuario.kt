@@ -1,15 +1,16 @@
 package com.example.Api_Tfg.model
 
-import org.springframework.data.annotation.Id
+import org.bson.codecs.pojo.annotations.BsonId
 import org.springframework.data.mongodb.core.mapping.Document
 import java.util.Date
 
 @Document("Usuarios")
-data class User (
-    @Id
-    val _id : String,
+data class Usuario (
+    @BsonId
+    val _id : String, //email
     val name : String,
     val username: String,
+    val password: String,
     val fechaNacimiento: Date,
     val fechaAlta: Date,
     val peso: Double,
