@@ -19,10 +19,26 @@ sealed class AppScreen (val route: String) {
 
     object LoginScreen: AppScreen("LoginScreen")
 
-    object RegisterScreen: AppScreen("RegisterScreen")
+    object RegistroScreen: AppScreen("RegistroScreen")
 
     object HomeScreen: AppScreen("HomeScreen")
 
-    object PerfilScreen: AppScreen("PerfilScreen")
+    object UserScreen: AppScreen("UserScreen")
+
+    object CalendarScreen: AppScreen("CalendarScree")
+
+    object CicloAjustesScreen: AppScreen("CicloAjustesScreen")
+
+    object ConfiguracionScreen: AppScreen("ConfiguracionScreen")
+
+    object DailyScreen: AppScreen("DailyScreen")
+
+    object LoadScreen: AppScreen("LoadScreen")
+
+    object PremiumScreen: AppScreen("PremiumScreen")
+
+    object StatsScreen: AppScreen("StatsScreen")
+
+    object UsuarioAjustesScreen: AppScreen("UsuarioAjustesScreen")
 
 }

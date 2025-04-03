@@ -6,12 +6,12 @@ plugins {
 
 android {
     namespace = "com.example.interfaz_mesames"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.interfaz_mesames"
         minSdk = 25
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -57,10 +57,11 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+    /*
     implementation (libs.retrofit)
     implementation (libs.converter.gson)
     implementation (libs.okhttp)
     implementation (libs.login.interceptor)
     implementation (libs.kotlinx.coroutines)
-
+*/
 }
