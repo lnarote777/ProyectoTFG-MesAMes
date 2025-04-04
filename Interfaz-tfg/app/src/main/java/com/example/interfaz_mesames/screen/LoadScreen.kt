@@ -15,9 +15,11 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.focusModifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
@@ -29,10 +31,16 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.interfaz_mesames.R
+import com.example.interfaz_mesames.navigation.AppScreen
 
-@Preview
 @Composable
-fun LoadScreen(){
+fun LoadScreen(navController: NavController){
+
+    LaunchedEffect(Unit) {
+        kotlinx.coroutines.delay(5000)
+        navController.navigate(route = AppScreen.LoginScreen.route)
+    }
+
     Box(){
         Image(painter = painterResource(R.drawable.fondo_load),
             contentDescription = "Fondo",
@@ -45,7 +53,7 @@ fun LoadScreen(){
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier.fillMaxSize()
         ) {
-            Spacer(Modifier.height(200.dp))
+            Spacer(Modifier.height(220.dp))
             Image(painter = painterResource(R.drawable.icon),
                 contentDescription = "Icono",
                 modifier = Modifier.size(120.dp)
@@ -63,8 +71,14 @@ fun LoadScreen(){
                 color = colorResource(R.color.eslogan)
             )
 
+            Spacer(Modifier.height(200.dp))
 
-            LinearProgressIndicator()
+            LinearProgressIndicator(
+                modifier = Modifier
+                    .padding(top = 30.dp),
+                color = Color.Magenta,
+                trackColor = Color.White
+            )
             
         }
     }

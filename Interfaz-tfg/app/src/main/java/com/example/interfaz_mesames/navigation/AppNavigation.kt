@@ -52,7 +52,7 @@ fun AppNavigation(){
         }
 
         composable(AppScreen.LoadScreen.route){
-            LoadScreen()
+            LoadScreen(navController)
         }
 
         composable(AppScreen.PremiumScreen.route){
