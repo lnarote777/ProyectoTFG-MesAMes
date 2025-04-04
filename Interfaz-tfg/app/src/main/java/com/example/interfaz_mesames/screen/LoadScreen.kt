@@ -37,7 +37,7 @@ import com.example.interfaz_mesames.navigation.AppScreen
 fun LoadScreen(navController: NavController){
 
     LaunchedEffect(Unit) {
-        kotlinx.coroutines.delay(5000)
+        kotlinx.coroutines.delay(1000) //Para pruebas. Original 5000
         navController.navigate(route = AppScreen.LoginScreen.route)
     }
 
