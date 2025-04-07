@@ -10,4 +10,6 @@
     <color name="titulo">#840051</color>
     <color name="eslogan">#34052D</color>
     <color name="botones1">#543585</color>
+    <color name="botones2">#D06589</color>
+    <color name="fondo">#F6F6F6</color>
 </resources>

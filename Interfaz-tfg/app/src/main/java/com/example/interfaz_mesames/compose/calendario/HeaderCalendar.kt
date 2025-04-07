@@ -1,4 +1,4 @@
-package com.example.interfaz_mesames.compose
+package com.example.interfaz_mesames.compose.calendario
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -16,13 +16,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-
+import com.example.interfaz_mesames.R
 
 @Composable
-fun Header(navController: NavController, title: String, back: Boolean = true, route: String = ""){
+fun HeaderCalendar(navController: NavController, title: String, back: Boolean = true, route: String = "", onTodayClick: () -> Unit){
 
     Box(
         modifier = Modifier.fillMaxWidth()
@@ -31,18 +36,18 @@ fun Header(navController: NavController, title: String, back: Boolean = true, ro
             .drawBehind {
                 val strokeWidth = 2.dp.toPx()
                 drawLine(
-                color = Color.Black,
-                start = Offset(0f, size.height - strokeWidth / 2),
-                end = Offset(size.width, size.height - strokeWidth / 2),
-                strokeWidth = strokeWidth
-            ) }
+                    color = Color.Black,
+                    start = Offset(0f, size.height - strokeWidth / 2),
+                    end = Offset(size.width, size.height - strokeWidth / 2),
+                    strokeWidth = strokeWidth
+                ) }
     ){
 
         Icon(imageVector = Icons.Default.ArrowBack,
             contentDescription = "Volver",
             modifier = Modifier
                 .align(Alignment.CenterStart)
-                .padding(horizontal = 10.dp)
+                .padding(start = 20.dp)
                 .clickable { if (back) navController.popBackStack() else navController.navigate(route = route)}
         )
 
@@ -50,7 +55,20 @@ fun Header(navController: NavController, title: String, back: Boolean = true, ro
             modifier = Modifier
                 .fillMaxWidth()
                 .align(Alignment.Center),
-            textAlign = TextAlign.Center
+            textAlign = TextAlign.Center,
+            fontFamily = FontFamily(Font(R.font.lexend, FontWeight.Bold)),
+            fontSize = 20.sp
+        )
+
+        Text( "Hoy",
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(end = 30.dp)
+                .align(Alignment.CenterEnd)
+                .clickable { onTodayClick() },
+            textAlign = TextAlign.End,
+            color = colorResource(R.color.botones2),
+            fontFamily = FontFamily(Font(R.font.lexend, FontWeight.Bold))
         )
 
     }
