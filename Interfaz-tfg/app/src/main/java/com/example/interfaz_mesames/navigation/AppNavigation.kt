@@ -22,7 +22,7 @@ import com.example.interfaz_mesames.screen.UsuarioAjustesScreen
 @Composable
 fun AppNavigation(){
     val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = AppScreen.CalendarScreen.route){
+    NavHost(navController = navController, startDestination = AppScreen.LoadScreen.route){
         composable(AppScreen.PortadaScreen.route){
             PortadaScreen(navController)
         }

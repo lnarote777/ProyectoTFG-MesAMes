@@ -38,7 +38,7 @@ fun LoadScreen(navController: NavController){
 
     LaunchedEffect(Unit) {
         kotlinx.coroutines.delay(1000) //Para pruebas. Original 5000
-        navController.navigate(route = AppScreen.LoginScreen.route)
+        navController.navigate(route = AppScreen.PortadaScreen.route)
     }
 
     Box(){

@@ -112,7 +112,7 @@ fun LoginScreen(navController: NavController){
 
                         Spacer(Modifier.height(20.dp))
 
-                        Text("¿Olvidaste la contraseña? Regístrate.",
+                        Text("¿Olvidaste la contraseña?",
                             textAlign = TextAlign.Center,
                             modifier =  Modifier
                                 .fillMaxWidth()
@@ -120,7 +120,7 @@ fun LoginScreen(navController: NavController){
                         )
                     }
 
-                    Text("¿Aun no estas registrada? Regístrate.",
+                    Text("¿Aun no estás registrada? Regístrate.",
                         textAlign = TextAlign.Center,
                         modifier =  Modifier
                             .fillMaxWidth()
