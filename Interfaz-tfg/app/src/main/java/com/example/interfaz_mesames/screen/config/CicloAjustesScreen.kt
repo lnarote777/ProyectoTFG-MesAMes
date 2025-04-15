@@ -1,4 +1,4 @@
-package com.example.interfaz_mesames.screen
+package com.example.interfaz_mesames.screen.config
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavController

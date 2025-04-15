@@ -1,12 +1,14 @@
 package com.example.interfaz_mesames.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.example.interfaz_mesames.screen.CalendarScreen
-import com.example.interfaz_mesames.screen.CicloAjustesScreen
-import com.example.interfaz_mesames.screen.ConfiguracionScreen
+import com.example.interfaz_mesames.screen.config.CicloAjustesScreen
+import com.example.interfaz_mesames.screen.config.ConfiguracionScreen
 import com.example.interfaz_mesames.screen.DailyScreen
 import com.example.interfaz_mesames.screen.HomeScreen
 import com.example.interfaz_mesames.screen.LoadScreen
@@ -16,13 +18,13 @@ import com.example.interfaz_mesames.screen.PremiumScreen
 import com.example.interfaz_mesames.screen.RegistroScreen
 import com.example.interfaz_mesames.screen.StatsScreen
 import com.example.interfaz_mesames.screen.UserScreen
-import com.example.interfaz_mesames.screen.UsuarioAjustesScreen
+import com.example.interfaz_mesames.screen.config.UsuarioAjustesScreen
 
 
 @Composable
 fun AppNavigation(){
     val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = AppScreen.LoadScreen.route){
+    NavHost(navController = navController, startDestination = AppScreen.UserScreen.route){
         composable(AppScreen.PortadaScreen.route){
             PortadaScreen(navController)
         }
@@ -63,8 +65,21 @@ fun AppNavigation(){
             UserScreen(navController)
         }
 
-        composable(AppScreen.UsuarioAjustesScreen.route){
-            UsuarioAjustesScreen(navController)
+        composable(AppScreen.UsuarioAjustesScreen.route+ "/{username}/{email}",
+            arguments = listOf(
+                navArgument(name = "username"){
+                    type = NavType.StringType
+                },
+                navArgument(name = "email"){
+                    type = NavType.StringType
+                }
+            )
+        ){
+            UsuarioAjustesScreen(
+                navController,
+                username = it.arguments?.getString("username")?: "",
+                email = it.arguments?.getString("email")?: ""
+            )
         }
 
         composable(AppScreen.StatsScreen.route){
