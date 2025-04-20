@@ -30,7 +30,7 @@ fun ConfigItem(
         modifier = Modifier
             .fillMaxWidth()
             .clickable(enabled = isClickable) { navController?.navigate(route = route) }
-            .padding(vertical = 16.dp, horizontal = 24.dp),
+            .padding(vertical = 10.dp, horizontal = 24.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
         icon?.let {
