@@ -34,7 +34,6 @@ import androidx.compose.ui.zIndex
 import androidx.navigation.NavController
 import com.example.interfaz_mesames.R
 import com.example.interfaz_mesames.navigation.AppScreen
-import com.example.interfaz_mesames.screen.DailyScreen
 
 
 @Composable

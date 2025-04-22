@@ -29,7 +29,7 @@ fun AppNavigation(){
     val navController = rememberNavController()
     AnimatedNavHost(
         navController = navController,
-        startDestination = AppScreen.HomeScreen.route,
+        startDestination = AppScreen.DailyScreen.route,
         enterTransition = {
             slideInVertically(initialOffsetY = { it }) + fadeIn()
         },

@@ -15,10 +15,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -30,22 +27,16 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.focus.focusModifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.interfaz_mesames.R
 import com.example.interfaz_mesames.compose.Footer
-import com.example.interfaz_mesames.compose.Header
 import com.example.interfaz_mesames.compose.calendario.Mes
 import com.example.interfaz_mesames.navigation.AppScreen
-import kotlinx.coroutines.delay
 import java.time.LocalDate
-import java.util.Date
 
 
 @Composable
@@ -73,7 +64,7 @@ fun HomeScreen(navController: NavController){
         )
         Column(modifier = Modifier
             .fillMaxSize()
-            .padding(bottom = 80.dp) // Deja espacio para el footer
+            .padding(bottom = 80.dp)
             .verticalScroll(scrollState)
         ) {
             Row(
@@ -83,13 +74,13 @@ fun HomeScreen(navController: NavController){
             ) {
                 IconButton(
                     onClick = { navController.navigate(route = AppScreen.PremiumScreen.route) },
-                    modifier = Modifier.size(50.dp) // Aquí defines el tamaño real del botón
+                    modifier = Modifier.size(50.dp)
                 ) {
                     Box(modifier = Modifier.fillMaxSize()) {
                         Image(
                             painter = painterResource(R.drawable.corona_home),
                             contentDescription = "VIP",
-                            modifier = Modifier.fillMaxSize() // La imagen se escala al tamaño del contenedor
+                            modifier = Modifier.fillMaxSize()
                         )
                     }
                 }
