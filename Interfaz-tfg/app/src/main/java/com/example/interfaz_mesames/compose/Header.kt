@@ -16,9 +16,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.interfaz_mesames.R
 
 
 @Composable
@@ -50,7 +55,10 @@ fun Header(navController: NavController, title: String, back: Boolean = true, ro
             modifier = Modifier
                 .fillMaxWidth()
                 .align(Alignment.Center),
-            textAlign = TextAlign.Center
+            textAlign = TextAlign.Center,
+            fontFamily = FontFamily(Font(R.font.lexend)),
+            fontWeight = FontWeight.Bold,
+            fontSize = 20.sp
         )
 
     }

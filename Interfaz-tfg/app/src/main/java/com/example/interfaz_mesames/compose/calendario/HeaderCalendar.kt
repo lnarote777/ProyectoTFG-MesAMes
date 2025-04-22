@@ -62,7 +62,6 @@ fun HeaderCalendar(navController: NavController, title: String, back: Boolean = 
 
         Text( "Hoy",
             modifier = Modifier
-                .fillMaxWidth()
                 .padding(end = 30.dp)
                 .align(Alignment.CenterEnd)
                 .clickable { onTodayClick() },

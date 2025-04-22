@@ -19,12 +19,30 @@ import com.example.interfaz_mesames.screen.RegistroScreen
 import com.example.interfaz_mesames.screen.StatsScreen
 import com.example.interfaz_mesames.screen.UserScreen
 import com.example.interfaz_mesames.screen.config.UsuarioAjustesScreen
+import com.google.accompanist.navigation.animation.AnimatedNavHost
+import com.google.accompanist.navigation.animation.composable
+import androidx.compose.animation.*
 
-
+@OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun AppNavigation(){
     val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = AppScreen.UserScreen.route){
+    AnimatedNavHost(
+        navController = navController,
+        startDestination = AppScreen.HomeScreen.route,
+        enterTransition = {
+            slideInVertically(initialOffsetY = { it }) + fadeIn()
+        },
+        exitTransition = {
+            slideOutVertically(targetOffsetY = { -it }) + fadeOut()
+        },
+        popEnterTransition = {
+            slideInVertically(initialOffsetY = { -it }) + fadeIn()
+        },
+        popExitTransition = {
+            slideOutVertically(targetOffsetY = { it }) + fadeOut()
+        }
+    ) {
         composable(AppScreen.PortadaScreen.route){
             PortadaScreen(navController)
         }

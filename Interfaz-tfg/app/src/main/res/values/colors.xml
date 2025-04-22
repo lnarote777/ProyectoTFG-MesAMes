@@ -14,6 +14,9 @@
     <color name="fondo">#F6F6F6</color>
     <color name="VipBox">#42BF34A1</color>
     <color name="ocre">#C9A42C</color>
-
+    <color name="rosa_55">#8CFFD3D5</color>
+    <color name="bordeMorado">#673175</color>
+    <color name="iconosNav">#F1B7BA</color>
+    <color name="navMenu">#321B51</color>
 
 </resources>
