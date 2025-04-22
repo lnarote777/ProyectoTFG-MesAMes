@@ -5,7 +5,7 @@ import java.util.Date
 
 data class SeguimientoDiario(
     val _id: Int, //Auto Incremental
-    val usuario: User,
+    val usuario: Usuario,
     val horasSueno: Time,
     val fecha: Date,
     val flujo: Flujo, //string

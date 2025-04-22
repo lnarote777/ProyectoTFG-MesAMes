@@ -1,7 +1,7 @@
 package com.example.Api_Tfg.dto
 
-class UsuarioDTO (
+class UserDTO (
     val email: String,
     val username: String,
-    val nombre: String
+    val name: String
 )

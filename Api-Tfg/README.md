@@ -19,27 +19,29 @@ Además, ofrece funcionalidades como:
 ## 📂 **Estructura de la Base de Datos**
 
 ### 🏷️ **Usuarios**
-| Campo            | Tipo          | Descripción                                         |
-|------------------|---------------|-----------------------------------------------------|
-| `id`             | String        | Identificador único, correo electróico del usuario. |
-| `nombre`         | String        | Nombre del usuario                                  |
-| `username`       | String        | Nombre de usuario                                   |
-| `password`       | String (hash) | Contraseña encriptada                               |
-| `fecha_registro` | Date          | Fecha en la que se registró                         |
+| Campo               | Tipo          | Descripción                                         |
+|---------------------|---------------|-----------------------------------------------------|
+| `id`                | String        | Identificador único, correo electróico del usuario. |
+| `name`              | String        | Nombre del usuario                                  |
+| `username`          | String        | Nombre de usuario                                   |
+| `password`          | String (hash) | Contraseña encriptada                               |
+| `registration_date` | Date          | Fecha en la que se registró                         |
 
 ### 📆 **SeguimientoDiario**
-| Campo              | Tipo       | Descripción                                            |
-|--------------------|------------|--------------------------------------------------------|
-| `id`               | Int        | ID único del seguimiento                               |
-| `usuario`          | Usuario    | Usuario que realiza el seguimiento                     |
-| `fecha`            | Date       | Fecha del seguimiento                                  |
-| `fase_ciclo`       | String     | Fase del ciclo (Menstruación, Ovulación, etc.)         |
-| `flujo_menstrual`  | String     | Intensidad del flujo                                   |
-| `actividad_fisica` | String     | Actividad física realizada                             |
-| `sintomas`         | JSON       | Lista de síntomas registrados                          |
-| `sentimientos`     | JSON       | Lista de estados emocionales                           |
-| `notas`            | String     | Notas opcionales                                       |
+| Campo              | Tipo   | Descripción                                            |
+|--------------------|--------|--------------------------------------------------------|
+| `id`               | Int    | ID único del seguimiento                               |
+| `user`             | User   | Usuario que realiza el seguimiento                     |
+| `date`             | Date   | Fecha del seguimiento                                  |
+| `cycle_phase`      | String | Fase del ciclo (Menstruación, Ovulación, etc.)         |
+| `menstrual_flow`   | String | Intensidad del flujo                                   |
+| `pysical_activity` | String | Actividad física realizada                             |
+| `sexual_activity`  | String | Actividad física realizada                             |
+| `symptoms`         | JSON   | Lista de síntomas registrados                          |
+| `feelings`         | JSON   | Lista de estados emocionales                           |
+| `notes`            | String | Notas opcionales                                       |
 
+//sujeto a cambios
 ### 💠 **Otras Tablas Relacionadas**
 - `fases_ciclo`: Contiene las distintas fases del ciclo.
 - `sintomas`: Lista de síntomas predefinidos.
@@ -51,51 +53,54 @@ Además, ofrece funcionalidades como:
 ## 📡 **Endpoints de la API**
 
 ### **👤 Usuarios**
-| Método   | Endpoint               | Descripción                             |
-|----------|------------------------|-----------------------------------------|
-| `GET`    | `/api/usuarios/{id}`   | Obtiene un usuario por su ID.           |
-| `POST`   | `/api/registrar`       | Registra un nuevo usuario.              |
-| `POST`   | `/api/login`           | Registra un nuevo usuario.              |
-| `PUT`    | `/api/usuarios/{id}`   | Actualiza la información de un usuario. |
-| `DELETE` | `/api/usuarios/{id}`   | Elimina un usuario.                     |
+| Método   | Endpoint                   | Descripción                                     |
+|----------|----------------------------|-------------------------------------------------|
+| `GET`    | `/api/list-users/{email}`  | Obtiene un usuario por su ID.                   |
+| `GET`    | `/api/list-users`          | Obtiene todos los usuarios de la base de datos. |
+| `POST`   | `/api/register`            | Registra un nuevo usuario.                      |
+| `POST`   | `/api/login`               | Registra un nuevo usuario.                      |
+| `PUT`    | `/api/user-update`         | Actualiza la información de un usuario.         |
+| `DELETE` | `/api/user-delete/{email}` | Elimina un usuario.                             |
+
+---
 
 ### **📅 Seguimiento Diario**
-| Método   | Endpoint                        | Descripción                           |
-|----------|---------------------------------|---------------------------------------|
-| `GET`    | `/api/seguimientos/{usuarioId}` | Obtiene el historial de seguimiento.  |
-| `POST`   | `/api/seguimientos`             | Registra un nuevo seguimiento diario. |
-| `DELETE` | `/api/seguimientos/{id}`        | Elimina un registro de seguimiento.   |
+| Método   | Endpoint                   | Descripción                           |
+|----------|----------------------------|---------------------------------------|
+| `GET`    | `/api/follow-ups/{userId}` | Obtiene el historial de seguimiento.  |
+| `POST`   | `/api/folow-ups`           | Registra un nuevo seguimiento diario. |
+| `DELETE` | `/api/follow-ups/{id}`     | Elimina un registro de seguimiento.   |
 
 ### **🔄 Fases del Ciclo**
-| Método  | Endpoint             | Descripción                          |
-|---------|----------------------|--------------------------------------|
-| `GET`   | `/api/fases-ciclo`   | Lista las fases del ciclo menstrual. |
+| Método  | Endpoint            | Descripción                          |
+|---------|---------------------|--------------------------------------|
+| `GET`   | `/api/cycle-phases` | Lista las fases del ciclo menstrual. |
 
 ### **🤕 Síntomas**
-| Método | Endpoint | Descripción |
-|--------|---------|-------------|
-| `GET`  | `/api/sintomas` | Obtiene la lista de síntomas. |
+| Método | Endpoint        | Descripción                   |
+|--------|-----------------|-------------------------------|
+| `GET`  | `/api/symptoms` | Obtiene la lista de síntomas. |
 
 ### **😊 Estados Emocionales**
-| Método | Endpoint | Descripción |
-|--------|---------|-------------|
-| `GET`  | `/api/estados-emocionales` | Obtiene la lista de emociones. |
+| Método | Endpoint                | Descripción                    |
+|--------|-------------------------|--------------------------------|
+| `GET`  | `/api/emotional-states` | Obtiene la lista de emociones. |
 
 ### **🔔 Notificaciones**
-| Método | Endpoint | Descripción |
-|--------|---------|-------------|
-| `GET`  | `/api/notificaciones/{usuarioId}` | Obtiene los recordatorios del usuario. |
+| Método | Endpoint                         | Descripción                            |
+|--------|----------------------------------|----------------------------------------|
+| `GET`  | `/api/notifications/{usuarioId}` | Obtiene los recordatorios del usuario. |
 
 ---
 
 ## 🚨 **Manejo de Errores**
-| Código | Mensaje | Descripción |
-|--------|---------|-------------|
-| `400` | `Bad Request` | Datos inválidos en la solicitud. |
-| `401` | `Unauthorized` | Token de autenticación inválido o faltante. |
-| `403` | `Forbidden` | No tienes permisos para esta acción. |
-| `404` | `Not Found` | Recurso no encontrado. |
-| `500` | `Internal Server Error` | Error interno del servidor. |
+| Código | Mensaje                 | Descripción                                 |
+|--------|-------------------------|---------------------------------------------|
+| `400`  | `Bad Request`           | Datos inválidos en la solicitud.            |
+| `401`  | `Unauthorized`          | Token de autenticación inválido o faltante. |
+| `403`  | `Forbidden`             | No tienes permisos para esta acción.        |
+| `404`  | `Not Found`             | Recurso no encontrado.                      |
+| `500`  | `Internal Server Error` | Error interno del servidor.                 |
 
 ---
 

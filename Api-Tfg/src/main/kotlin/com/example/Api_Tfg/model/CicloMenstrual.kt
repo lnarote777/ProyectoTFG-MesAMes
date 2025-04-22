@@ -4,7 +4,7 @@ import java.util.Date
 
 data class CicloMenstrual(
     val _id : Int, //Auto incremental
-    val user: User,
+    val user: Usuario,
     val fechaInicio : Date,
     val fechaFin : Date,
     val duracion : Int,

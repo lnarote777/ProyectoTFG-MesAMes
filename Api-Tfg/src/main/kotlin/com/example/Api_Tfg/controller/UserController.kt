@@ -1,12 +1,12 @@
 package com.example.Api_Tfg.controller
 
-import com.example.Api_Tfg.dto.UsuarioDTO
-import com.example.Api_Tfg.dto.UsuarioLoginDTO
-import com.example.Api_Tfg.dto.UsuarioRegistroDTO
+import com.example.Api_Tfg.dto.UserDTO
+import com.example.Api_Tfg.dto.UserLoginDTO
+import com.example.Api_Tfg.dto.UserRegisterDTO
 import com.example.Api_Tfg.error.exception.BadRequestException
 import com.example.Api_Tfg.error.exception.UnauthorizedException
 import com.example.Api_Tfg.service.TokenService
-import com.example.Api_Tfg.service.UsuarioService
+import com.example.Api_Tfg.service.UserService
 import jakarta.servlet.http.HttpServletRequest
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
@@ -19,25 +19,25 @@ import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.*
 
 @Controller
-@RequestMapping("/usuarios")
-class UsuarioController {
+@RequestMapping("/users")
+class UserController {
 
     @Autowired
     private lateinit var authenticationManager: AuthenticationManager
     @Autowired
     private lateinit var tokenService: TokenService
     @Autowired
-    private lateinit var usuarioService: UsuarioService
+    private lateinit var userService: UserService
 
     @PostMapping("/login")
-    fun login(@RequestBody usuario: UsuarioLoginDTO?) : ResponseEntity<Any>? {
-        if(usuario == null){
+    fun login(@RequestBody user: UserLoginDTO?) : ResponseEntity<Any>? {
+        if(user == null){
             throw BadRequestException("El parámetro no puede estar vacío.")
         }
 
         val authentication: Authentication = try {
             authenticationManager.authenticate(
-                UsernamePasswordAuthenticationToken(usuario.username, usuario.password)
+                UsernamePasswordAuthenticationToken(user.username, user.password)
             )
         } catch (e: AuthenticationException) {
             throw UnauthorizedException("Credenciales incorrectas")
@@ -50,32 +50,33 @@ class UsuarioController {
     @PostMapping("/register")
     fun insert(
         httpRequest: HttpServletRequest,
-        @RequestBody usuarioInsertDTO: UsuarioRegistroDTO
-    ) : ResponseEntity<UsuarioDTO>{
-        val usuario = usuarioService.insertarUsuario(usuarioInsertDTO)
-        return ResponseEntity(usuario, HttpStatus.CREATED)
+        @RequestBody userInsertDTO: UserRegisterDTO
+    ) : ResponseEntity<UserDTO>{
+        val user = userService.registerUser(userInsertDTO)
+        return ResponseEntity(user, HttpStatus.CREATED)
     }
 
-    @GetMapping("/lista")
+    @GetMapping("/list-users")
     fun getAllUsers(
         httpRequest: HttpServletRequest
-    ): ResponseEntity<List<UsuarioDTO>> {
-        TODO()
+    ): ResponseEntity<List<UserDTO>> {
+        val usuarios = userService.getAllUsers()
+        return ResponseEntity(usuarios, HttpStatus.OK )
     }
 
     @DeleteMapping("/delete/{email}")
     fun deleteByEmail(
         @PathVariable email: String,
         httpRequest: HttpServletRequest
-    ) : ResponseEntity<UsuarioDTO>? {
+    ) : ResponseEntity<UserDTO>? {
         TODO()
     }
 
     @PutMapping("/update")
     fun update(
-        @RequestBody usuarioUpdated: UsuarioRegistroDTO,
+        @RequestBody usuarioUpdated: UserRegisterDTO,
         httpRequest: HttpServletRequest,
-    ): ResponseEntity<UsuarioDTO>{
+    ): ResponseEntity<UserDTO>{
         TODO()
     }
 

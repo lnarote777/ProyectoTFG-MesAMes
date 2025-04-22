@@ -37,7 +37,7 @@ class SecurityConfig {
         return http
             .csrf { csrf -> csrf.disable() } // Cross-Site Forgery
             .authorizeHttpRequests { auth -> auth
-                .requestMatchers("/usuarios/register", "/usuarios/login").permitAll() // Público
+                .requestMatchers("/users/register", "/users/login").permitAll() // Público
 
                 //Otros
                 .anyRequest().authenticated()
