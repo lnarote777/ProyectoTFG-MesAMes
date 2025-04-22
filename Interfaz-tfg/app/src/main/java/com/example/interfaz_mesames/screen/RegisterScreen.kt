@@ -25,9 +25,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.Font
@@ -41,15 +39,16 @@ import com.example.interfaz_mesames.R
 import com.example.interfaz_mesames.compose.CalendarField
 import com.example.interfaz_mesames.compose.TextFielPassword
 import com.example.interfaz_mesames.compose.Textfield
+import com.example.interfaz_mesames.compose.calendario.CustomDatePickerDialog
 import com.example.interfaz_mesames.navigation.AppScreen
-import java.util.Calendar
+import java.time.format.DateTimeFormatter
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun RegistroScreen(navController: NavController){
+fun RegisterScreen(navController: NavController){
     var email by rememberSaveable { mutableStateOf("") }
-    var nombre by rememberSaveable { mutableStateOf("") }
-    var user by rememberSaveable { mutableStateOf("") }
+    var name by rememberSaveable { mutableStateOf("") }
+    var username by rememberSaveable { mutableStateOf("") }
     var password by rememberSaveable { mutableStateOf("") }
     var passVisible by rememberSaveable { mutableStateOf(false) }
     var passwordRepeat by rememberSaveable { mutableStateOf("") }
@@ -60,18 +59,12 @@ fun RegistroScreen(navController: NavController){
     var errorMessage by remember { mutableStateOf("") }
 
     if (showDatePicker) {
-        val context = LocalContext.current
-        val calendar = Calendar.getInstance()
-        android.app.DatePickerDialog(
-            context,
-            { _, year, month, dayOfMonth ->
-                selectedDate = "$dayOfMonth/${month + 1}/$year"
-                showDatePicker = false
-            },
-            calendar.get(Calendar.YEAR),
-            calendar.get(Calendar.MONTH),
-            calendar.get(Calendar.DAY_OF_MONTH)
-        ).show()
+        CustomDatePickerDialog(
+            onDismiss = { showDatePicker = false },
+            onDateSelected = {
+                selectedDate = it.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
+            }
+        )
     }
 
     Box(){
@@ -83,14 +76,15 @@ fun RegistroScreen(navController: NavController){
         )
 
         Column(horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center,
+            verticalArrangement = Arrangement.Bottom,
             modifier = Modifier.fillMaxSize()
         ) {
             Box(modifier = Modifier
                 .fillMaxWidth(0.9F)
+                .padding(bottom = 100.dp)
                 .clip(RoundedCornerShape(51.dp))
-                .background(Color.White)
-                .height(800.dp)
+                .background(colorResource(R.color.tarjetaDatos))
+                .height(600.dp)
 
             ) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally,
@@ -102,18 +96,18 @@ fun RegistroScreen(navController: NavController){
                     ) {
                         Text("Resgístrate",
                             textAlign = TextAlign.Center,
-                            fontFamily = FontFamily(Font(R.font.inter, FontWeight.Bold)),
-                            fontSize = 24.sp,
+                            fontFamily = FontFamily(Font(R.font.inter, FontWeight.ExtraBold)),
+                            fontSize = 28.sp,
                             modifier =  Modifier
                                 .fillMaxWidth()
                                 .padding(20.dp)
                             // .clickable { navController.navigate(route = AppScreen.RegisterScreen.route) }
                         )
 
-                        Textfield(nombre, "Nombre") { nombre = it }
+                        Textfield(name, "Nombre") { name = it }
                         Spacer(Modifier.height(20.dp))
 
-                        Textfield(user, "Nombre de usuario") { user = it }
+                        Textfield(username, "Nombre de usuario") { username = it }
                         Spacer(Modifier.height(20.dp))
 
                         Textfield(email, "Email") { email = it }
@@ -154,7 +148,7 @@ fun RegistroScreen(navController: NavController){
 
         Button(
             onClick = {
-                if (user.isBlank() || password.isBlank()) {
+                if (username.isBlank() || password.isBlank()) {
                     errorMessage = "Por favor, completa ambos campos"
                 } else {
                     // Si todo está bien, intentamos hacer login

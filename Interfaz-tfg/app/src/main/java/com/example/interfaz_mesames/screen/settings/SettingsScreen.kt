@@ -1,4 +1,4 @@
-package com.example.interfaz_mesames.screen.config
+package com.example.interfaz_mesames.screen.settings
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -19,12 +19,11 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.interfaz_mesames.R
 import com.example.interfaz_mesames.compose.Header
-import com.example.interfaz_mesames.compose.configuraciones.ConfigItem
+import com.example.interfaz_mesames.compose.configuraciones.SettingItem
 import com.example.interfaz_mesames.navigation.AppScreen
 
-
 @Composable
-fun ConfiguracionScreen(navController: NavController){
+fun SettingsScreen(navController: NavController){
     Header(navController, "Ajustes")
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -45,25 +44,25 @@ fun ConfiguracionScreen(navController: NavController){
 
         ){
             Column(modifier = Modifier.padding(vertical = 8.dp)) {
-                ConfigItem(title = "Idioma", value = "Español")
+                SettingItem(title = "Idioma", value = "Español")
                 Divider(modifier = Modifier.padding(horizontal = 16.dp))
-                ConfigItem(title = "Unidades", value = "Kg/cm")
+                SettingItem(title = "Unidades", value = "Kg/cm")
                 Divider(modifier = Modifier.padding(horizontal = 16.dp))
-                ConfigItem(title = "Apariencia", value = "Sistema")
+                SettingItem(title = "Apariencia", value = "Sistema")
                 Divider(modifier = Modifier.padding(horizontal = 16.dp))
-                ConfigItem(title = "Recordatorios", isClickable = true)
+                SettingItem(title = "Recordatorios", isClickable = true)
                 Divider(modifier = Modifier.padding(horizontal = 16.dp))
-                ConfigItem(title = "Tema", isClickable = true)
+                SettingItem(title = "Tema", isClickable = true)
                 Divider(modifier = Modifier.padding(horizontal = 16.dp))
-                ConfigItem(title = "Actualizar a premium", isClickable = true, navController = navController, route = AppScreen.PremiumScreen.route)
+                SettingItem(title = "Actualizar a premium", isClickable = true, navController = navController, route = AppScreen.PremiumScreen.route)
                 Divider(modifier = Modifier.padding(horizontal = 16.dp))
-                ConfigItem(title = "Ayuda y comentarios", isClickable = true)
+                SettingItem(title = "Ayuda y comentarios", isClickable = true)
                 Divider(modifier = Modifier.padding(horizontal = 16.dp))
-                ConfigItem(title = "Privacidad", isClickable = true)
+                SettingItem(title = "Privacidad", isClickable = true)
                 Divider(modifier = Modifier.padding(horizontal = 16.dp))
-                ConfigItem(title = "Configuración de privacidad", isClickable = true)
+                SettingItem(title = "Configuración de privacidad", isClickable = true)
                 Divider(modifier = Modifier.padding(horizontal = 16.dp))
-                ConfigItem(title = "Sobre nosotros", isClickable = true)
+                SettingItem(title = "Sobre nosotros", isClickable = true)
             }
         }
     }

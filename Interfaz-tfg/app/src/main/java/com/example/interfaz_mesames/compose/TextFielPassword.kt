@@ -9,6 +9,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -36,13 +37,7 @@ import com.example.interfaz_mesames.R
 @Composable
 fun TextFielPassword(password: String, passVisible: Boolean, placeholder: String, valueChange: (String) -> Unit, onclick: () -> Unit){
 
-    Text(placeholder,
-        textAlign = TextAlign.Left,
-        modifier = Modifier.fillMaxWidth()
-            .padding(start = 25.dp, bottom = 10.dp )
-    )
-
-    OutlinedTextField(
+    TextField(
         value = password,
         onValueChange = valueChange,
         modifier = Modifier
@@ -50,10 +45,12 @@ fun TextFielPassword(password: String, passVisible: Boolean, placeholder: String
             .fillMaxWidth()
             .height(60.dp),
         visualTransformation = if (passVisible) VisualTransformation.None else PasswordVisualTransformation(),
-        colors = TextFieldDefaults.outlinedTextFieldColors(
-            focusedBorderColor = Color.Blue,
-            unfocusedBorderColor = Color.LightGray,
-            cursorColor = Color.Blue
+        colors = TextFieldDefaults.textFieldColors(
+            containerColor = Color.Transparent, // sin fondo
+            focusedIndicatorColor = Color(0xFF6A1B9A), // línea morada intensa
+            unfocusedIndicatorColor = Color(0xFF9C27B0), // línea morada suave
+            disabledIndicatorColor = Color.Transparent,
+            cursorColor = Color(0xFF6A1B9A)
         ),
         singleLine = true,
         trailingIcon ={
@@ -69,6 +66,6 @@ fun TextFielPassword(password: String, passVisible: Boolean, placeholder: String
                 )
             }
         },
-        placeholder = { Text(placeholder) }
+        label = { Text(placeholder) }
     )
 }

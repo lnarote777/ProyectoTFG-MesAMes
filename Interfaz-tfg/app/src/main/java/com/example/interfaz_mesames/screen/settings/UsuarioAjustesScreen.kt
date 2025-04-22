@@ -1,4 +1,4 @@
-package com.example.interfaz_mesames.screen.config
+package com.example.interfaz_mesames.screen.settings
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -19,11 +19,11 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.interfaz_mesames.R
 import com.example.interfaz_mesames.compose.Header
-import com.example.interfaz_mesames.compose.configuraciones.ConfigItem
+import com.example.interfaz_mesames.compose.configuraciones.SettingItem
 import com.example.interfaz_mesames.navigation.AppScreen
 
 @Composable
-fun UsuarioAjustesScreen(navController: NavController, username: String? ="", email: String? = ""){
+fun UserSettingsScreen(navController: NavController, username: String? ="", email: String? = ""){
     Header(
         navController = navController,
         title = "Ajustes del perfil",
@@ -50,11 +50,11 @@ fun UsuarioAjustesScreen(navController: NavController, username: String? ="", em
 
         ){
             Column(modifier = Modifier.padding(vertical = 8.dp)) {
-                ConfigItem(title = "Cambiar foto de perfil", value = "") // foto de perfil
+                SettingItem(title = "Cambiar foto de perfil", value = "") // foto de perfil
                 Divider(modifier = Modifier.padding(horizontal = 16.dp))
-                ConfigItem(title = "Cambiar nombre de usuario", value = username)
+                SettingItem(title = "Cambiar nombre de usuario", value = username)
                 Divider(modifier = Modifier.padding(horizontal = 16.dp))
-                ConfigItem(title = "Cambiar email", value = email)
+                SettingItem(title = "Cambiar email", value = email)
                 Divider(modifier = Modifier.padding(horizontal = 16.dp))
             }
         }

@@ -14,21 +14,17 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.interfaz_mesames.R
-import com.example.interfaz_mesames.compose.Header
-import com.example.interfaz_mesames.compose.calendario.HeaderCalendar
-import com.example.interfaz_mesames.compose.calendario.Mes
+import com.example.interfaz_mesames.compose.calendario.CalendarHeader
+import com.example.interfaz_mesames.compose.calendario.Month
 import kotlinx.coroutines.launch
 import java.time.LocalDate
 import java.time.Month
-import java.time.Year
 
 @Composable
 fun CalendarScreen(navController: NavController){
@@ -58,7 +54,7 @@ fun CalendarScreen(navController: NavController){
             .padding(top = 30.dp, bottom = 18.dp)
             .background(color = colorResource(R.color.fondo))
     ) {
-        HeaderCalendar(navController, "Calendario",
+        CalendarHeader(navController, "Calendario",
             onTodayClick = {
                 selectedDate = currentDate
                 val currentMonthIndex = months.indexOfFirst {
@@ -79,7 +75,7 @@ fun CalendarScreen(navController: NavController){
             state = listState
         ) {
             items(months) { monthYear ->
-                Mes(
+                Month(
                     year = monthYear.year,
                     month = monthYear.month,
                     selectedDate = selectedDate,

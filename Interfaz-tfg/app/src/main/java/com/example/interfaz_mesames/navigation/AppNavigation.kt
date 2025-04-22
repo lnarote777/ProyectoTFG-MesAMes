@@ -2,13 +2,11 @@ package com.example.interfaz_mesames.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavType
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.interfaz_mesames.screen.CalendarScreen
-import com.example.interfaz_mesames.screen.config.CicloAjustesScreen
-import com.example.interfaz_mesames.screen.config.ConfiguracionScreen
+import com.example.interfaz_mesames.screen.settings.CicloAjustesScreen
+import com.example.interfaz_mesames.screen.settings.ConfiguracionScreen
 import com.example.interfaz_mesames.screen.DailyScreen
 import com.example.interfaz_mesames.screen.HomeScreen
 import com.example.interfaz_mesames.screen.LoadScreen
@@ -18,7 +16,7 @@ import com.example.interfaz_mesames.screen.PremiumScreen
 import com.example.interfaz_mesames.screen.RegistroScreen
 import com.example.interfaz_mesames.screen.StatsScreen
 import com.example.interfaz_mesames.screen.UserScreen
-import com.example.interfaz_mesames.screen.config.UsuarioAjustesScreen
+import com.example.interfaz_mesames.screen.settings.UsuarioAjustesScreen
 import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.composable
 import androidx.compose.animation.*
@@ -29,7 +27,7 @@ fun AppNavigation(){
     val navController = rememberNavController()
     AnimatedNavHost(
         navController = navController,
-        startDestination = AppScreen.DailyScreen.route,
+        startDestination = AppScreen.LoadScreen.route,
         enterTransition = {
             slideInVertically(initialOffsetY = { it }) + fadeIn()
         },

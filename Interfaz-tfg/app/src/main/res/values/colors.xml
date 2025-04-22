@@ -18,5 +18,6 @@
     <color name="bordeMorado">#673175</color>
     <color name="iconosNav">#F1B7BA</color>
     <color name="navMenu">#321B51</color>
+    <color name="tarjetaDatos">#D1FFD5D5</color>
 
 </resources>

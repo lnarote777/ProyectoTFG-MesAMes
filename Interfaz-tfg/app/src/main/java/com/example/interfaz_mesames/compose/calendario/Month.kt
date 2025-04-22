@@ -5,7 +5,6 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -33,7 +32,7 @@ import java.time.format.TextStyle
 import java.util.Locale
 
 @Composable
-fun Mes(
+fun Month(
     year: Int,
     month: Month,
     selectedDate: LocalDate,
@@ -43,8 +42,8 @@ fun Mes(
     val firstDayOfMonth = LocalDate.of(year, month, 1)
     val daysInMonth = month.length(Year.of(year).isLeap)
     val firstDayOfWeek = firstDayOfMonth.dayOfWeek
-    val hoy = currentDate
-    val isCurrentMonth = year == hoy.year && month == hoy.month
+    val today = currentDate
+    val isCurrentMonth = year == today.year && month == today.month
 
     Column(
         modifier = Modifier
@@ -80,7 +79,6 @@ fun Mes(
             }
         }
 
-        // Días del mes
         var currentWeek = 0
         val weeksInMonth = ((firstDayOfWeek.value - 1 + daysInMonth) / 7) + 1
 
@@ -101,16 +99,14 @@ fun Mes(
                         if (day in 1..daysInMonth) {
                             val date = LocalDate.of(year, month, day)
                             val isSelected = date == selectedDate
-                            val isToday = date == hoy
+                            val isToday = date == today
 
-                            // Fondo para día seleccionado o actual
                             val backgroundColor = when {
                                 isSelected -> colorResource(R.color.botones2)
                                 isToday -> colorResource(R.color.botones2).copy(alpha = 0.3f)
                                 else -> Color.Transparent
                             }
 
-                            // Color del texto
                             val textColor = when {
                                 isSelected -> MaterialTheme.colorScheme.onPrimary
                                 isToday -> colorResource(R.color.botones2)

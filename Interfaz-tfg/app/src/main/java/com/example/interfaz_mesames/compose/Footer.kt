@@ -44,7 +44,7 @@ fun Footer(navController: NavController, modifier: Modifier = Modifier) {
             .fillMaxWidth()
             .height(90.dp)
     ) {
-        //Para la muesca
+
         Canvas(
             modifier = Modifier
                 .fillMaxWidth()

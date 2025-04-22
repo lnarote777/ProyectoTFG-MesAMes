@@ -32,7 +32,6 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
@@ -42,7 +41,7 @@ import kotlinx.coroutines.delay
 
 
 @Composable
-fun PortadaScreen(navController: NavController){
+fun CoverScreen(navController: NavController){
     val fondos = listOf(
         R.drawable.portada1,
         R.drawable.portada2
@@ -76,7 +75,6 @@ fun PortadaScreen(navController: NavController){
                 modifier = Modifier.fillMaxSize()
             )
         }
-
 
         Column(
             modifier = Modifier

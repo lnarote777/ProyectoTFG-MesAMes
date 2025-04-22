@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -18,13 +17,12 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.interfaz_mesames.R
-import com.example.interfaz_mesames.compose.Footer
+import com.example.interfaz_mesames.compose.Card
 import com.example.interfaz_mesames.compose.Header
-import com.example.interfaz_mesames.compose.Tarjeta
 
 @Composable
 fun DailyScreen(navController: NavController){
-    val scrollState = rememberScrollState()
+    //provisional la lista asi
     val sintomas = listOf<Pair<String, List<String>>>(
         Pair("Nombres", listOf("Juan", "Lucas", "Matias")),
         Pair("Nombres", listOf("Juan", "Lucas", "Matias")),
@@ -56,7 +54,7 @@ fun DailyScreen(navController: NavController){
             LazyColumn {
                 items(sintomas.count()){index ->
                     val pair = sintomas[index]
-                    Tarjeta(title = pair.first,
+                    Card(title = pair.first,
                         emojis = pair.second,
                         color = Color.Red
                     )

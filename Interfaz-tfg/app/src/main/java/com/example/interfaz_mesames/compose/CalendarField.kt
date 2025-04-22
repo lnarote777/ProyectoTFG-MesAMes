@@ -11,6 +11,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -24,13 +25,7 @@ import androidx.compose.ui.unit.sp
 @Composable
 fun CalendarField(selectedDate: String, valueChange: (String)->Unit, onclick: () -> Unit){
 
-    Text("Fecha nacimiento",
-        textAlign = TextAlign.Left,
-        modifier = Modifier.fillMaxWidth()
-            .padding(start = 25.dp, bottom = 10.dp )
-    )
-
-    OutlinedTextField(
+    TextField(
         value = selectedDate,
         onValueChange =  valueChange ,
         placeholder = { Text("dd/mm/yyyy") },
@@ -45,10 +40,12 @@ fun CalendarField(selectedDate: String, valueChange: (String)->Unit, onclick: ()
             .height(60.dp)
             .clickable { onclick() },
         textStyle = TextStyle(fontSize = 16.sp),
-        colors = TextFieldDefaults.outlinedTextFieldColors(
-            focusedBorderColor = Color.Blue,
-            unfocusedBorderColor = Color.LightGray,
-            cursorColor = Color.Blue
+        colors = TextFieldDefaults.textFieldColors(
+            containerColor = Color.Transparent, // sin fondo
+            focusedIndicatorColor = Color(0xFF6A1B9A), // línea morada intensa
+            unfocusedIndicatorColor = Color(0xFF9C27B0), // línea morada suave
+            disabledIndicatorColor = Color.Transparent,
+            cursorColor = Color(0xFF6A1B9A)
         ),
     )
 

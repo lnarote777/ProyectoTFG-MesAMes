@@ -44,7 +44,7 @@ fun Header(navController: NavController, title: String, back: Boolean = true, ro
     ){
 
         Icon(imageVector = Icons.Default.ArrowBack,
-            contentDescription = "Volver",
+            contentDescription = "Back",
             modifier = Modifier
                 .align(Alignment.CenterStart)
                 .padding(horizontal = 10.dp)

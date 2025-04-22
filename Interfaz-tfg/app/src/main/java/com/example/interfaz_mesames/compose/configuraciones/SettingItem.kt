@@ -18,7 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 
 @Composable
-fun ConfigItem(
+fun SettingItem(
     title: String,
     value: String? = null,
     isClickable: Boolean = false,
@@ -52,7 +52,7 @@ fun ConfigItem(
         if (value != null) {
             Text(text = value, color = Color.Gray)
         } else if (isClickable) {
-            Icon(Icons.Default.ArrowForward, contentDescription = "Ir", tint = MaterialTheme.colorScheme.primary)
+            Icon(Icons.Default.ArrowForward, contentDescription = "Go to", tint = MaterialTheme.colorScheme.primary)
         }
     }
 }

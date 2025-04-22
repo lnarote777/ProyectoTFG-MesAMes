@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -29,13 +30,7 @@ import androidx.compose.ui.unit.sp
 @Composable
 fun Textfield(value: String, placeholder: String, valueChange: (String) -> Unit){
 
-    Text(placeholder,
-        textAlign = TextAlign.Left,
-        modifier = Modifier.fillMaxWidth()
-            .padding(start = 25.dp, bottom = 10.dp )
-    )
-
-    OutlinedTextField(
+    TextField(
         value = value,
         onValueChange = valueChange ,
         modifier = Modifier
@@ -43,11 +38,14 @@ fun Textfield(value: String, placeholder: String, valueChange: (String) -> Unit)
             .fillMaxWidth()
             .height(60.dp),
         textStyle = TextStyle(fontSize = 16.sp),
-        colors = TextFieldDefaults.outlinedTextFieldColors(
-            focusedBorderColor = Color.Blue,
-            unfocusedBorderColor = Color.LightGray,
-            cursorColor = Color.Blue
+        colors = TextFieldDefaults.textFieldColors(
+            containerColor = Color.Transparent, // sin fondo
+            focusedIndicatorColor = Color(0xFF6A1B9A), // línea morada intensa
+            unfocusedIndicatorColor = Color(0xFF9C27B0), // línea morada suave
+            disabledIndicatorColor = Color.Transparent,
+            cursorColor = Color(0xFF6A1B9A)
         ),
-        placeholder = { Text(placeholder) }
+        label = { Text(placeholder) },
+        singleLine = true
     )
 }

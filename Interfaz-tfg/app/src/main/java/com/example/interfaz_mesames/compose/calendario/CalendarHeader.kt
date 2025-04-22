@@ -27,7 +27,7 @@ import androidx.navigation.NavController
 import com.example.interfaz_mesames.R
 
 @Composable
-fun HeaderCalendar(navController: NavController, title: String, back: Boolean = true, route: String = "", onTodayClick: () -> Unit){
+fun CalendarHeader(navController: NavController, title: String, back: Boolean = true, route: String = "", onTodayClick: () -> Unit){
 
     Box(
         modifier = Modifier.fillMaxWidth()
