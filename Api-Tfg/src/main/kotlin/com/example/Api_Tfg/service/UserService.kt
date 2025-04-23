@@ -3,6 +3,7 @@ package com.example.Api_Tfg.service
 import com.example.Api_Tfg.dto.DTOMapper
 import com.example.Api_Tfg.dto.UserDTO
 import com.example.Api_Tfg.dto.UserRegisterDTO
+import com.example.Api_Tfg.dto.UserUpdateDTO
 import com.example.Api_Tfg.error.exception.BadRequestException
 import com.example.Api_Tfg.error.exception.NotFoundException
 import com.example.Api_Tfg.error.exception.UnauthorizedException
@@ -70,8 +71,16 @@ class UserService: UserDetailsService {
         return DTOMapper.userEntityToDTO(user)
     }
 
-    fun updateUser(usuarioInsert: UserRegisterDTO): UserDTO {
-        
+    fun updateUser(userInsertDTO: UserUpdateDTO): UserDTO {
+        val user: UserEntity = userRepository.findUserBy_id(userInsertDTO.email).orElseThrow { NotFoundException("No se encontró al usuario con email ${userInsertDTO.email}.") }
+        user.password = passwordEncoder.encode(userInsertDTO.password)
+        user.username = userInsertDTO.username
+        user.goal = userInsertDTO.goal
+        user.height = userInsertDTO.height
+        user.weight = userInsertDTO.weight
+        userRepository.save(user)
+        val userDTO = DTOMapper.userEntityToDTO(user)
+        return userDTO
     }
 
 
