@@ -52,7 +52,5 @@ class PayController(
         val session = Session.create(params)
         return mapOf("url" to session.url)
     }
-
 }
 
-//https://tusitio.com/exito?session_id={CHECKOUT_SESSION_ID}  / https://tusitio.com/cancelado

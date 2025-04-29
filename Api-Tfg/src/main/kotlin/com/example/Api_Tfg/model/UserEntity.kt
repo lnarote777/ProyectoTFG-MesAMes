@@ -16,10 +16,9 @@ data class UserEntity(
     val registrationDate: Date,
     var weight: Double,
     var height: Double,
-    var goal: Goal //String // Quedar enbarazada - evitar embarazo - seguimiento general
+    var goal: Goal
 )
 
-//Sujeto a cambio
 enum class Goal {
     GET_PREGNANT, TRACK_PERIOD, AVOID_PREGNANCY
 }
