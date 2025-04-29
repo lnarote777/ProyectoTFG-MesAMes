@@ -33,8 +33,12 @@ dependencies {
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 	implementation("org.springframework.boot:spring-boot-starter-oauth2-resource-server")
 
+	//MongoDB
 	implementation("org.mongodb:mongodb-driver-kotlin-sync:5.3.0")
 	implementation("org.springframework.boot:spring-boot-starter-webflux")
+
+	//Stripe (Pago)
+	implementation("com.stripe:stripe-java:24.0.0")
 }
 
 kotlin {
