@@ -42,3 +42,6 @@ out/
 
 ### .env ###
 .env
+
+# Project exclude paths
+/build/
