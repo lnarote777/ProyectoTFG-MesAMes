@@ -105,23 +105,23 @@ fun RegisterScreen(navController: NavController){
                         )
 
                         Textfield(name, "Nombre") { name = it }
-                        Spacer(Modifier.height(20.dp))
+                        Spacer(Modifier.height(10.dp))
 
                         Textfield(username, "Nombre de usuario") { username = it }
-                        Spacer(Modifier.height(20.dp))
+                        Spacer(Modifier.height(10.dp))
 
                         Textfield(email, "Email") { email = it }
-                        Spacer(Modifier.height(20.dp))
+                        Spacer(Modifier.height(10.dp))
 
                         TextFielPassword(password, passVisible, "Contraseña", { password = it }) {
                             passVisible = !passVisible
                         }
-                        Spacer(Modifier.height(20.dp))
+                        Spacer(Modifier.height(10.dp))
 
                         TextFielPassword(passwordRepeat, passVisibleRepeat, "Repetir contraseña", { passwordRepeat = it }) {
                             passVisibleRepeat = !passVisibleRepeat
                         }
-                        Spacer(Modifier.height(20.dp))
+                        Spacer(Modifier.height(10.dp))
 
                         CalendarField(
                             selectedDate = selectedDate,

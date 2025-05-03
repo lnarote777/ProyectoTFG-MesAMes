@@ -34,7 +34,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.interfaz_mesames.R
 import com.example.interfaz_mesames.compose.Footer
-import com.example.interfaz_mesames.compose.calendario.Mes
+import com.example.interfaz_mesames.compose.calendario.Month
 import com.example.interfaz_mesames.navigation.AppScreen
 import java.time.LocalDate
 
@@ -122,7 +122,7 @@ fun HomeScreen(navController: NavController){
                 Spacer(Modifier.height(70.dp))
                 val currentDate = LocalDate.now()
                 var selectedDate by remember { mutableStateOf(LocalDate.now()) }
-                Mes(
+                Month(
                     year = currentDate.year,
                     month = currentDate.month,
                     selectedDate = selectedDate,

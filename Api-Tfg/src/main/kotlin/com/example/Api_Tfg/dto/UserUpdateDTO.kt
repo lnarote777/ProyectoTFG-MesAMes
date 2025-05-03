@@ -1,7 +1,6 @@
 package com.example.Api_Tfg.dto
 
 import com.example.Api_Tfg.model.Goal
-import java.util.*
 
 data class UserUpdateDTO (
     val email: String,

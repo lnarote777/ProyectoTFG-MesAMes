@@ -3,6 +3,7 @@ package com.example.Api_Tfg.controller
 import com.example.Api_Tfg.dto.UserDTO
 import com.example.Api_Tfg.dto.UserLoginDTO
 import com.example.Api_Tfg.dto.UserRegisterDTO
+import com.example.Api_Tfg.dto.UserUpdateDTO
 import com.example.Api_Tfg.error.exception.BadRequestException
 import com.example.Api_Tfg.error.exception.UnauthorizedException
 import com.example.Api_Tfg.service.TokenService
@@ -60,8 +61,8 @@ class UserController {
     fun getAllUsers(
         httpRequest: HttpServletRequest
     ): ResponseEntity<List<UserDTO>> {
-        val usuarios = userService.getAllUsers()
-        return ResponseEntity(usuarios, HttpStatus.OK )
+        val users = userService.getAllUsers()
+        return ResponseEntity(users, HttpStatus.OK )
     }
 
     @DeleteMapping("/delete/{email}")
@@ -69,15 +70,17 @@ class UserController {
         @PathVariable email: String,
         httpRequest: HttpServletRequest
     ) : ResponseEntity<UserDTO>? {
-        TODO()
+        val user = userService.deleteUser(email)
+        return ResponseEntity(user, HttpStatus.OK)
     }
 
     @PutMapping("/update")
     fun update(
-        @RequestBody usuarioUpdated: UserRegisterDTO,
+        @RequestBody usuarioUpdated: UserUpdateDTO,
         httpRequest: HttpServletRequest,
     ): ResponseEntity<UserDTO>{
-        TODO()
+        val user = userService.updateUser(usuarioUpdated)
+        return ResponseEntity(user, HttpStatus.OK)
     }
 
 }

@@ -1,25 +1,29 @@
 package com.example.interfaz_mesames.navigation
 
+import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOutVertically
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavType
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.interfaz_mesames.screen.CalendarScreen
-import com.example.interfaz_mesames.screen.settings.CicloAjustesScreen
-import com.example.interfaz_mesames.screen.settings.ConfiguracionScreen
+import com.example.interfaz_mesames.screen.CoverScreen
 import com.example.interfaz_mesames.screen.DailyScreen
 import com.example.interfaz_mesames.screen.HomeScreen
 import com.example.interfaz_mesames.screen.LoadScreen
 import com.example.interfaz_mesames.screen.LoginScreen
-import com.example.interfaz_mesames.screen.PortadaScreen
 import com.example.interfaz_mesames.screen.PremiumScreen
-import com.example.interfaz_mesames.screen.RegistroScreen
+import com.example.interfaz_mesames.screen.RegisterScreen
 import com.example.interfaz_mesames.screen.StatsScreen
 import com.example.interfaz_mesames.screen.UserScreen
-import com.example.interfaz_mesames.screen.settings.UsuarioAjustesScreen
+import com.example.interfaz_mesames.screen.settings.CycleSettingsScreen
+import com.example.interfaz_mesames.screen.settings.SettingsScreen
+import com.example.interfaz_mesames.screen.settings.UserSettingsScreen
 import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.composable
-import androidx.compose.animation.*
 
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
@@ -42,7 +46,7 @@ fun AppNavigation(){
         }
     ) {
         composable(AppScreen.PortadaScreen.route){
-            PortadaScreen(navController)
+            CoverScreen(navController)
         }
 
         composable(AppScreen.LoginScreen.route){
@@ -50,7 +54,7 @@ fun AppNavigation(){
         }
 
         composable(AppScreen.RegistroScreen.route){
-            RegistroScreen(navController)
+            RegisterScreen(navController)
         }
 
         composable(AppScreen.CalendarScreen.route){
@@ -58,7 +62,7 @@ fun AppNavigation(){
         }
 
         composable(AppScreen.ConfiguracionScreen.route){
-            ConfiguracionScreen(navController)
+            SettingsScreen(navController)
         }
 
         composable(AppScreen.DailyScreen.route){
@@ -91,10 +95,10 @@ fun AppNavigation(){
                 }
             )
         ){
-            UsuarioAjustesScreen(
+            UserSettingsScreen(
                 navController,
-                username = it.arguments?.getString("username")?: "",
-                email = it.arguments?.getString("email")?: ""
+                username = it.arguments?.getString("username") ?: "",
+                email = it.arguments?.getString("email") ?: ""
             )
         }
 
@@ -103,7 +107,7 @@ fun AppNavigation(){
         }
 
         composable(AppScreen.CicloAjustesScreen.route){
-            CicloAjustesScreen(navController)
+            CycleSettingsScreen(navController)
         }
 
 

@@ -10,6 +10,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -43,6 +45,8 @@ fun DailyScreen(navController: NavController){
         Pair("Nombres", listOf("Juan", "Lucas", "Matias")),
     ) // para el view model
 
+    val (selectedSymptoms, setSelectedSymptoms) = remember { mutableStateOf(listOf<String>()) }
+
     Box {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
@@ -56,6 +60,8 @@ fun DailyScreen(navController: NavController){
                     val pair = sintomas[index]
                     Card(title = pair.first,
                         emojis = pair.second,
+                        selectedEmojis = selectedSymptoms,
+                        onSelectionChange = setSelectedSymptoms,
                         color = Color.Red
                     )
                     Spacer(Modifier.height(20.dp))

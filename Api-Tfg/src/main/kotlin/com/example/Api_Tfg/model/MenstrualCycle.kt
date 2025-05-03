@@ -13,13 +13,13 @@ data class MenstrualCycle(
     val startDate: LocalDate,
     val cycleLength: Int,
     val bleedingDuration: Int,
-    val averageFlow: FlowLevel,
+    val averageFlow: MenstrualFlowLevel,
     val symptoms: List<String> = listOf(),
     val moodChanges: List<String> = listOf(),
     val registeredAt: LocalDate = LocalDate.now(),
     val notes: String? = null
 )
 
-enum class FlowLevel {
+enum class MenstrualFlowLevel {
     LIGHT, MODERATE, HEAVY, CLOTS
 }

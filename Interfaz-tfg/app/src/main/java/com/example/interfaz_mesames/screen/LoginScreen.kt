@@ -49,6 +49,7 @@ fun LoginScreen(navController: NavController){
     var passVisible by rememberSaveable { mutableStateOf(false) }
     //val uiState by viewModel.uiState.collectAsState()
     var errorMessage by remember { mutableStateOf("") }
+    var error by rememberSaveable { mutableStateOf(false) }
 
     Box(){
         Image(painter = painterResource(R.drawable.fondo_login),
@@ -65,7 +66,7 @@ fun LoginScreen(navController: NavController){
             Box(modifier = Modifier
                 .fillMaxWidth(0.9F)
                 .clip(RoundedCornerShape(topStart = 51.dp, topEnd = 51.dp))
-                .background(Color.White)
+                .background(colorResource(R.color.tarjetaDatos))
                 .height(600.dp)
 
             ) {
@@ -91,13 +92,22 @@ fun LoginScreen(navController: NavController){
                         TextFielPassword(password, passVisible, "Contraseña", { password = it }) {
                             passVisible = !passVisible
                         }
+                        Spacer(Modifier.height(30.dp))
+                        if (error){
+                            Text(
+                                errorMessage,
+                                color = Color.Red,
+                                fontSize = 20.sp
+                            )
+                        }
 
-                        Spacer(Modifier.height(90.dp))
+                        Spacer(Modifier.height(60.dp))
 
                         Button(
                             onClick = {
                                 if (user.isBlank() || password.isBlank()) {
                                     errorMessage = "Por favor, completa ambos campos"
+                                    error = true
                                 } else {
                                     // Si todo está bien, intentamos hacer login
                                     // viewModel.login(user, password, navController)
