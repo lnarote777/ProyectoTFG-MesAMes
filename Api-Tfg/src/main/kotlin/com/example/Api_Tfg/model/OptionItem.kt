@@ -1,6 +1,7 @@
 package com.example.Api_Tfg.model
 
 import org.springframework.data.annotation.Id
+import org.springframework.data.mongodb.core.mapping.Document
 
 @Document("OptionItem")
 data class OptionItem(
