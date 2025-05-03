@@ -9,6 +9,6 @@ import org.springframework.boot.runApplication
 @EnableConfigurationProperties(RSAKeysProperties::class)
 class ApiTfgApplication
 
-fun main(args: Array<String>) {
-	runApplication<ApiTfgApplication>(*args)
-}
+	fun main(args: Array<String>) {
+		runApplication<ApiTfgApplication>(*args)
+	}
