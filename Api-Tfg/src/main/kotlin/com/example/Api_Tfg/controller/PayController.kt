@@ -1,6 +1,6 @@
 package com.example.Api_Tfg.controller
 
-import com.example.Api_Tfg.model.SubscriptionRequest
+import com.example.Api_Tfg.model.Subscription
 import com.stripe.Stripe
 import com.stripe.model.checkout.Session
 import com.stripe.param.checkout.SessionCreateParams
@@ -13,15 +13,18 @@ import org.springframework.web.bind.annotation.RequestMapping
 @Controller
 @RequestMapping("/pay")
 class PayController(
-    @Value("\${stripe.secret.key}") private val stripeSecretKey: String,
-    @Value("\${frontend.success.url}") private val successUrl: String,
-    @Value("\${frontend.cancel.url}") private val cancelUrl: String
+    @Value("\${STRIPE_SECRET_KEY}")
+    private val stripeSecretKey: String,
+    @Value("\${frontend.success.url}")
+    private val successUrl: String,
+    @Value("\${frontend.cancel.url}")
+    private val cancelUrl: String
 ) {
     init {
         Stripe.apiKey = stripeSecretKey
     }
-    @PostMapping("create-subscription")
-    fun createSubscription(@RequestBody request: SubscriptionRequest): Map<String, String> {
+    @PostMapping("/create-subscription")
+    fun createSubscription(@RequestBody request: Subscription): Map<String, String> {
         val (email, type) = request
 
         val priceId = when (type) {
